@@ -1,0 +1,12 @@
+[Unit]
+Description=FdA 7-inch Display Total Control
+Requires=localdisplay.service
+After=localdisplay.service
+
+[Service]
+Type=simple
+ExecStart=/home/pi/FdA_DISPLAY/start_display.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

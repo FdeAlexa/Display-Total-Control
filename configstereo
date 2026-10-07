@@ -1,0 +1,27 @@
+## Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
+
+[general]
+framerate = 60
+autosens = 1
+sensitivity = 100
+bars = 64
+lower_cutoff_freq = 20
+higher_cutoff_freq = 20000
+
+[input]
+method = alsa
+source = plug_condiviso
+
+[output]
+method = raw
+channels = stereo
+mono_option = average
+raw_target = /home/pi/FdA_DISPLAY/FdAfifo
+data_format = ascii
+ascii_max_range = 99
+
+[color]
+
+[smoothing]
+
+[eq]
