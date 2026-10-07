@@ -163,13 +163,13 @@ curl -O https://raw.githubusercontent.com/FdeAlexa/Display-Total-Control/main/Pr
 The C&C Red Alert font contains spaces and special characters in its filename. Use:
 
 ```bash
-curl -o 'C&C Red Alert [INET].ttf' 'https://raw.githubusercontent.com/FdeAlexa/Display-Total-Control/main/C%26C%20Red%20Alert%20%5BINET%5D.ttf'
+curl -o 'C&C Red Alert [INET].ttf' 'https://raw.githubusercontent.com/FdeAlexa/Display-Total-Control/main/'C%26C%20Red%20Alert%20%5BINET%5D.ttf'
 ```
 
 Download the font documentation and licenses:
 
 ```bash
-curl -O https://raw.githubusercontent.com/FdeAlexa/Display-Total-Control/main/README%20%5BINET%5D.txt
+curl -O https://raw.githubusercontent.com/FdeAlexa/Display-Total-Control/main/'README%20%5BINET%5D.txt'
 ```
 
 ```bash
