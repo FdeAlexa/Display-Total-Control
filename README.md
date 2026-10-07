@@ -169,7 +169,7 @@ curl -o 'C&C Red Alert [INET].ttf' 'https://raw.githubusercontent.com/FdeAlexa/D
 Download the font documentation and licenses:
 
 ```bash
-curl -L -o 'README [INET].txt' 'https://raw.githubusercontent.com/FdeAlexa/Display-Total-Control/main/README%20%5BINET%5D.txt'
+curl -o 'README [INET].txt' 'https://raw.githubusercontent.com/FdeAlexa/Display-Total-Control/main/README%20%5BINET%5D.txt'
 ```
 
 ```bash
