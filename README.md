@@ -24,7 +24,7 @@ The following components must be configured before installing the project.
 
 A working 7-inch display with a resolution of:
 
-`text
+`
 800 × 480
 `
 
@@ -50,9 +50,9 @@ Install the required Python modules:
 
 The project uses the virtual environment:
 
-```text
+`
 /home/pi/display-env
-```
+`
 
 ---
 
@@ -60,7 +60,7 @@ The project uses the virtual environment:
 
 ALSA Loopback must be enabled in moOde.
 
-**Menu → Config → Audio → ALSA Options → ALSA Loopback → ON**
+**Menu → Configure → Audio → ALSA Options → Loopback → ON**
 
 ---
 
@@ -69,6 +69,7 @@ ALSA Loopback must be enabled in moOde.
 Create the ALSA configuration file:
 
 ```bash
+cd /home/pi
 cat > ~/.asoundrc <<'EOF'
 pcm.condiviso {
     type dsnoop
@@ -116,9 +117,9 @@ cp /usr/bin/cava ~/cava/cava
 
 The project expects CAVA at:
 
-```text
+`
 /home/pi/cava/cava
-```
+`
 
 ---
 
@@ -126,7 +127,7 @@ The project expects CAVA at:
 
 Metadata must be enabled in moOde.
 
-**Menu → Config → Audio → MPD Options → General → Metadata file → ON**
+**Menu → Configure → Audio → MPD Options → General → Metadata file → ON**
 
 ---
 
@@ -215,14 +216,14 @@ Before installing the systemd service, start the program manually:
 
 ```bash
 cd ~/FdA_DISPLAY
-~/display-env/bin/python display_total_control.py
+DISPLAY=:0 ~/display-env/bin/python display_total_control.py
 ```
 
 Stop the program with:
 
-```text
+`
 Ctrl+C
-```
+`
 
 ---
 
