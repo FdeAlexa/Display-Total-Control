@@ -24,9 +24,9 @@ The following components must be configured before installing the project.
 
 A working 7-inch display with a resolution of:
 
-```text
+`text
 800 × 480
-```
+`
 
 The display must already be configured and working with moOde.
 
