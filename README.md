@@ -16,6 +16,12 @@ The project uses the Raspberry Pi ALSA Loopback, CAVA and the moOde REST API.
 
 ---
 
+
+https://github.com/user-attachments/assets/b16cb9a8-6dd3-4f80-a083-c8258bf3f80a
+
+
+---
+
 # Prerequisites
 
 The following components must be configured before installing the project.
