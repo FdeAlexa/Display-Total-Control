@@ -489,7 +489,7 @@ def build_sco_surface(
 ):
     """Piccolo Scope OLED 128x64: storico a sinistra, nuovo valore a destra."""
     surface = pygame.Surface((OLED_W, OLED_H))
-    surface.fill(BLACK)
+    surface.fill(Back_Sco)
 
     # ------------------------------------------------------------
     # STORICO
@@ -514,14 +514,14 @@ def build_sco_surface(
 
         pygame.draw.line(
             surface,
-            WHITE,
+            Col_Sco,
             (x, zero_top - lh),
             (x, zero_top - 1),
         )
 
         pygame.draw.line(
             surface,
-            WHITE,
+            Col_Sco,
             (x, zero_bottom + 1),
             (x, zero_bottom + rh),
         )
@@ -552,7 +552,7 @@ def draw_scroll_text(surface, font, text, y, scroll_state):
     if not text:
         return {"offset": 0.0, "pause": 0}
 
-    rendered = font.render(text, True, WHITE)
+    rendered = font.render(text, True, Col_Mus)
     text_width = rendered.get_width()
 
     if text_width <= OLED_W:
@@ -586,7 +586,7 @@ def draw_scroll_text(surface, font, text, y, scroll_state):
 def build_mus_surface(font_small, font_scroll, state, scroll_state):
     """Costruisce il francobollo Mus 128x64."""
     surface = pygame.Surface((OLED_W, OLED_H))
-    surface.fill(BLACK)
+    surface.fill(Back_Mus)
 
     if not state["playing"]:
         return surface
@@ -605,20 +605,20 @@ def build_mus_surface(font_small, font_scroll, state, scroll_state):
     )
 
     surface.blit(
-        font_small.render("IN", True, WHITE),
+        font_small.render("IN", True, Col_Mus),
         (0, 41),
     )
     surface.blit(
-        font_small.render(state["in"], True, WHITE),
+        font_small.render(state["in"], True, Col_Mus),
         (14, 41),
     )
 
     surface.blit(
-        font_small.render("OUT", True, WHITE),
+        font_small.render("OUT", True, Col_Mus),
         (0, 54),
     )
     surface.blit(
-        font_small.render(state["out"], True, WHITE),
+        font_small.render(state["out"], True, Col_Mus),
         (20, 54),
     )
 
@@ -632,7 +632,7 @@ def build_mus_surface(font_small, font_scroll, state, scroll_state):
 def build_time_surface(font_std, font_time):
     """Disegna l'OLED virtuale 128x64 della schermata Time."""
     surface = pygame.Surface((OLED_W, OLED_H))
-    surface.fill(BLACK)
+    surface.fill(Back_Tim)
 
     hostname = subprocess.check_output(["hostname"], text=True).strip()
     ip_addr = subprocess.check_output(["hostname", "-I"], text=True).split()[0]
@@ -647,7 +647,7 @@ def build_time_surface(font_std, font_time):
     ]
 
     for font, value, y in texts:
-        rendered = font.render(value, True, WHITE)
+        rendered = font.render(value, True, Col_Tim)
         x = int((OLED_W - rendered.get_width()) / 2)
         surface.blit(rendered, (x, y))
 
@@ -778,7 +778,7 @@ def build_sysinfo_surface(font_small, moode_release):
     continuamente anche quando l'audio è fermo.
     """
     surface = pygame.Surface((OLED_W, OLED_H))
-    surface.fill(BLACK)
+    surface.fill(Back_Sin)
 
     data = get_sysinfo_data(moode_release)
 
@@ -827,13 +827,13 @@ def build_sysinfo_surface(font_small, moode_release):
 
     for row_y, label, width, value in rows:
         surface.blit(
-            font_small.render(label, True, WHITE),
+            font_small.render(label, True, Col_Sin),
             (0, row_y - 2),
         )
 
         pygame.draw.rect(
             surface,
-            WHITE,
+            Col_Sin,
             (
                 SYSINFO_BAR_X,
                 row_y,
@@ -845,7 +845,7 @@ def build_sysinfo_surface(font_small, moode_release):
 
         pygame.draw.rect(
             surface,
-            WHITE,
+            Col_Sin,
             (
                 SYSINFO_BAR_X,
                 row_y,
@@ -863,7 +863,7 @@ def build_sysinfo_surface(font_small, moode_release):
         rendered_value = font_small.render(
             value,
             True,
-            WHITE,
+            Col_Sin,
         )
 
         surface.blit(
@@ -878,7 +878,7 @@ def build_sysinfo_surface(font_small, moode_release):
         font_small.render(
             "TimeUP:",
             True,
-            WHITE,
+            Col_Sin,
         ),
         (0, SYSINFO_ROW_TIME - 2),
     )
@@ -887,7 +887,7 @@ def build_sysinfo_surface(font_small, moode_release):
         font_small.render(
             data["uptime"],
             True,
-            WHITE,
+            Col_Sin,
         ),
         (47, SYSINFO_ROW_TIME - 2),
     )
@@ -896,7 +896,7 @@ def build_sysinfo_surface(font_small, moode_release):
         font_small.render(
             data["release"],
             True,
-            WHITE,
+            Col_Sin,
         ),
         (0, SYSINFO_ROW_REL - 2),
     )
@@ -936,17 +936,32 @@ PLAY_AUDIO_DELAY = 3.0
 BLACK = "Black"
 WHITE = "White"
 
-GRAY15 = "Gray15"
+Back_Sco = "Black"
+Back_Mus = "Black"
+Back_Tim = "Black"
+Back_Sin = "Black"
+
+Col_Sco = (140, 230, 140)
+Col_Mus = (140, 230, 140)
+Col_Tim = (140, 230, 140)
+Col_Sin = (140, 230, 140)
+
+Back_Osc = (0, 30, 5)
+Grid_Osc = (0, 50, 10)
+Grid_Zero = (0, 100, 20)
+#Grid_Osc = (100, 30, 0)
+#Grid_Zero = (150, 40, 0)
+
+#TRACE_LEFT = "RoyalBlue1"
+#TRACE_RIGHT = "MediumOrchid2"
+TRACE_LEFT = (0, 210, 10)
+TRACE_RIGHT = (0, 210, 10)
+
 GRAY50 = "Gray50"
 GRAY80 = "Gray80"
 
-TRACE_LEFT = "RoyalBlue1"
-TRACE_RIGHT = "MediumOrchid2"
-
-
 GLOW_GREEN = "Yellow"
 GLOW_RED = "Orange"
-
 
 # ============================================================
 # CONFIGURAZIONE VUM / SPE
@@ -1245,7 +1260,7 @@ def get_layout():
 # ============================================================
 
 def draw_grid(screen, layout):
-    """Disegna la griglia dei due pannelli SCOPE."""
+
     top1 = layout["top1"]
     bot1 = layout["bot1"]
     mid_bot = layout["mid_bot"]
@@ -1254,36 +1269,79 @@ def draw_grid(screen, layout):
     lef1 = layout["lef1"]
     rig0 = layout["rig0"]
     rig1 = layout["rig1"]
+    
+###################################
+    """Disegna il Background dei due pannelli SCOPE."""
+
+    pygame.draw.rect(
+        screen,
+        Back_Osc,
+        (
+            lef0,
+            top1,
+            rig0 - lef0,
+            bot1 - top1
+        ),
+    )
+
+    pygame.draw.rect(
+        screen,
+        Back_Osc,
+        (
+            lef1,
+            top1,
+            rig1 - lef1,
+            bot1 - top1
+        ),
+    )
+
+##################################
+    """Disegna la griglia dei due pannelli SCOPE."""
 
     for i in range(11):
         x = int(i / 10 * (rig0 - 1))
 
         pygame.draw.line(
             screen,
-            GRAY15,
+            Grid_Osc,
             (x, top1),
             (x, bot1),
         )
 
         pygame.draw.line(
             screen,
-            GRAY15,
+            Grid_Osc,
             (x + lef1, top1),
             (x + lef1, bot1),
+        )
+
+    for i in range( 22, 240, 32):
+        pygame.draw.line(
+            screen,
+            Grid_Osc,
+            (lef0, top1 + i ),
+            (rig0, top1 + i ),
+        )
+    for i in range( 22, 240, 32):
+        pygame.draw.line(
+            screen,
+            Grid_Osc,
+            (lef1, top1 + i ),
+            (rig1, top1 + i ),
         )
 
     # Asse zero LEFT
     pygame.draw.line(
         screen,
-        GRAY50,
-        (lef0, mid_bot),
+        Grid_Zero,
+        (lef0 , mid_bot),
         (rig0, mid_bot),
     )
 
     # Asse zero RIGHT
     pygame.draw.line(
         screen,
-        GRAY50,
+        Grid_Zero,
         (lef1, mid_bot),
         (rig1, mid_bot),
     )
